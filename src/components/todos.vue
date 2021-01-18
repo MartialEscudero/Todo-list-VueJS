@@ -1,13 +1,11 @@
 <template>
     <v-app>
-        <v-card class="main" elevation="6">
-            <h1 class="d-flex justify-center">
+        <v-card class="main justify-center" width="40%" elevation="6">
+            <h1 class="text-center display-1">
                 Liste de course
             </h1>
 
-            <v-form>
-                <v-text-field class="add" placeholder="Écrire ici" v-model="todo" @click:append="addList" :append-icon="'mdi-plus'"></v-text-field>
-            </v-form>
+            <v-text-field class="add" placeholder="Écrire ici" v-model="todo" @click:append="addList"  @keyup.enter="addList" :append-icon="'mdi-plus'"></v-text-field>
 
             <section class="list">
                 <v-list-item v-for="todo in todos" :key="todo">
@@ -15,7 +13,7 @@
                         <v-list-item-title>{{ todo }}</v-list-item-title>
                     </v-list-item-content>
                     <v-list-item-icon>
-                    <v-btn  @click="deleteList(todo)">
+                        <v-btn  @click="deleteList(todo)">
                             <v-icon @click="deleteList(todo)">mdi-delete</v-icon>
                         </v-btn>
                     </v-list-item-icon>
@@ -65,8 +63,8 @@ export default {
     }
 
     .main {
+        padding: 1rem;
         margin: auto;
-        width: 40%;
     }
 
     .add {
