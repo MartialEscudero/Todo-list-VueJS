@@ -1,23 +1,28 @@
 <template>
-    <v-content class="main">
-        <h1>
-            Liste de course
-        </h1>
+    <v-app>
+        <v-card class="main" elevation="6">
+            <h1 class="d-flex justify-center">
+                Liste de course
+            </h1>
 
-        <div>
-            <input type="text" class="todos" placeholder="Écire ici" v-model="todo" @keyup.enter="addList">
-            <v-btn @click="addList">Ajouter</v-btn>
-        </div>
+            <v-form>
+                <v-text-field class="add" placeholder="Écrire ici" v-model="todo" @click:append="addList" :append-icon="'mdi-plus'"></v-text-field>
+            </v-form>
 
-        <div>
-            <v-list-item v-for="todo in todos" :key="todo">
-                <v-list-item-title>{{ todo }}</v-list-item-title>
-                <v-btn @click="deleteList(todo)">
-                    <v-icon>mdi-delete</v-icon>
-                </v-btn>
-            </v-list-item>
-        </div>
-    </v-content>
+            <section class="list">
+                <v-list-item v-for="todo in todos" :key="todo">
+                    <v-list-item-content>
+                        <v-list-item-title>{{ todo }}</v-list-item-title>
+                    </v-list-item-content>
+                    <v-list-item-icon>
+                    <v-btn  @click="deleteList(todo)">
+                            <v-icon @click="deleteList(todo)">mdi-delete</v-icon>
+                        </v-btn>
+                    </v-list-item-icon>
+                </v-list-item>
+            </section>
+        </v-card>
+    </v-app>    
 </template>
 
 <script>
@@ -60,8 +65,18 @@ export default {
     }
 
     .main {
-        max-width: 50%;
         margin: auto;
+        width: 40%;
+    }
+
+    .add {
+        margin: auto;
+        width: 80%;
+    }
+
+    .list {
+        margin: auto;
+        width: 50%;
     }
     
 </style>
