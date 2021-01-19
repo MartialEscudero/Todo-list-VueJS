@@ -35,7 +35,7 @@ export default {
 
         return {
             todo: '',
-            todos : this.$store.state.todo
+            todos : this.$store.state.todoShop
         }
 
     },
@@ -43,12 +43,12 @@ export default {
     methods: {
 
         addList() {
-            this.$store.commit('ADDLIST', this.todo);
+            this.$store.commit('ADDLISTSHOP', this.todo);
             this.todo = '';
         },
 
         deleteList(todo) {
-            this.$store.commit('DELETELIST', todo);
+            this.$store.commit('DELETELISTSHOP', todo);
         }
     }
 }
@@ -74,7 +74,7 @@ export default {
 
     .list {
         margin: auto;
-        width: 50%;
+        width: 60%;
     }
     
 </style>

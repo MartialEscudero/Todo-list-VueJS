@@ -5,22 +5,36 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        todo : ['Pomme', 'Orange']
+        todoShop : ['Pomme', 'Orange'],
+        todoSimple : ['24/01 - Partiel de management']
     },
 
     mutations: {
 
-        ADDLIST(state, todo) {
+        ADDLISTSHOP(state, todoShop) {
 
-            if (todo != '') {
-                state.todo.push(todo);
+            if (todoShop != '') {
+                state.todoShop.push(todoShop);
 
             }
         },
 
-        DELETELIST(state, todo) {
-            var index = state.todo.indexOf(todo);
-            state.todo.splice(index, 1);
+        DELETELISTSHOP(state, todoShop) {
+            var index = state.todoShop.indexOf(todoShop);
+            state.todoShop.splice(index, 1);
+        },
+
+        ADDLISTSIMPLE(state, todoSimple) {
+
+            if (todoSimple != '') {
+                state.todoSimple.push(todoSimple);
+
+            }
+        },
+
+        DELETELISTSIMPLE(state, todoSimple) {
+            var index = state.todoSimple.indexOf(todoSimple);
+            state.todoSimple.splice(index, 1);
         }
     },
 })
