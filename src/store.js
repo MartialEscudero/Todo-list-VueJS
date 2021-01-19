@@ -23,8 +23,4 @@ export default new Vuex.Store({
             state.todo.splice(index, 1);
         }
     },
-
-    actions: {
-        
-    }
 })
