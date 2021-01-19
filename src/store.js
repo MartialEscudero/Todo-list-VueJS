@@ -31,7 +31,8 @@ export default new Vuex.Store({
             }
 
             axios.get('https://strapi.hortusbox.com/todos').then(response => {
-                state.todoShop.push(response.data[0].Task);
+                var tab = response.data;
+                tab.forEach(element => state.todoShop.push(element.Task));
             });
         },
 
