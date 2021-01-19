@@ -2,7 +2,7 @@
     <v-app>
         <v-card class="main justify-center" width="40%" elevation="6">
             <h1 class="text-center display-1">
-                Liste de course
+                Pense-bête
             </h1>
 
             <v-text-field class="add" placeholder="Écrire ici" v-model="todo" @click:append="addList"  @keyup.enter="addList" :append-icon="'mdi-plus'"></v-text-field>
@@ -25,7 +25,7 @@
 
 <script>
 
-import store from './store.js'
+import store from '../store.js'
 
 export default {
 

@@ -1,15 +1,9 @@
-  <template>
-  <div>
-    <todos></todos>
-  </div>
+<template>
+    <div id="app">
+        <router-view></router-view>
+    </div>
 </template>
 
 <script>
-import todos from './components/todos.vue'
-export default {
-  name: 'App',
-  components: {
-    todos
-  }
-}
+    export default {}
 </script>
