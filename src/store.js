@@ -2,10 +2,6 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 
-axios.get('https://strapi.hortusbox.com/todos').then(response => {
-  console.log(response.data[0].Task);
-});
-
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -33,7 +29,7 @@ export default new Vuex.Store({
             if (state.todoShop.length != 0 ) {
                 state.todoShop.clear();
             }
-            
+
             axios.get('https://strapi.hortusbox.com/todos').then(response => {
                 state.todoShop.push(response.data[0].Task);
             });
@@ -51,9 +47,5 @@ export default new Vuex.Store({
             var index = state.todoSimple.indexOf(todoSimple);
             state.todoSimple.splice(index, 1);
         },
-    },
-
-    actions: {
-
     }
 })
