@@ -1,11 +1,16 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from 'axios'
+
+axios.get('https://strapi.hortusbox.com/todos').then(response => {
+  console.log(response.data[0].Task);
+});
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        todoShop : ['Pomme', 'Orange'],
+        todoShop : [],
         todoSimple : ['24/01 - Partiel de management']
     },
 
@@ -24,6 +29,16 @@ export default new Vuex.Store({
             state.todoShop.splice(index, 1);
         },
 
+        GETTODOS(state) {
+            if (state.todoShop.length != 0 ) {
+                state.todoShop.clear();
+            }
+            
+            axios.get('https://strapi.hortusbox.com/todos').then(response => {
+                state.todoShop.push(response.data[0].Task);
+            });
+        },
+
         ADDLISTSIMPLE(state, todoSimple) {
 
             if (todoSimple != '') {
@@ -35,6 +50,10 @@ export default new Vuex.Store({
         DELETELISTSIMPLE(state, todoSimple) {
             var index = state.todoSimple.indexOf(todoSimple);
             state.todoSimple.splice(index, 1);
-        }
+        },
     },
+
+    actions: {
+
+    }
 })

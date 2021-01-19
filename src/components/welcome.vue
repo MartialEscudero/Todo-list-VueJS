@@ -4,13 +4,27 @@
             <router-link :to="{name: 'todosShop'}" tag="button">Liste de course</router-link>
         </v-btn>
         <v-btn >
-            <router-link :to="{name: 'todosSimple'}" tag="button">Liste de course</router-link>
+            <router-link v-model="getTodos" :to="{name: 'todosSimple'}" tag="button">Pense-bête</router-link>
         </v-btn>
     </v-card>
 </template>
 
 <script>
-    export default {}
+
+import store from '../store.js'
+
+export default {
+
+    store : store,
+
+    methods: {
+
+        getTodos() {
+            this.$store.commit('getTodos');
+        }
+    }
+}
+
 </script>
 
 <style>

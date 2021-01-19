@@ -3,8 +3,6 @@ import App from './App.vue'
 import vuetify from './plugins/vuetify'
 import VueRouter from 'vue-router'
 import routes from './routers/routes.js'
-// import axios from 'axios';
-
 Vue.config.productionTip = false
 
 Vue.use(VueRouter)

@@ -40,6 +40,11 @@ export default {
 
     },
 
+    mounted() {
+
+        this.$store.commit('GETTODOS');
+    },
+
     methods: {
 
         addList() {
@@ -49,9 +54,10 @@ export default {
 
         deleteList(todo) {
             this.$store.commit('DELETELISTSHOP', todo);
-        }
+        },
     }
 }
+
 </script>
 
 <style>
