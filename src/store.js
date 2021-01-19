@@ -4,10 +4,6 @@ import axios from 'axios'
 
 Vue.use(Vuex)
 
-axios.get('https://strapi.hortusbox.com/todos').then(response => {
-  console.log(response.data[1].IsDone);
-});
-
 export default new Vuex.Store({
     state: {
         todoShop : [],
@@ -57,7 +53,7 @@ export default new Vuex.Store({
             }
 
             axios.get('https://strapi.hortusbox.com/todos').then(response => {
-                
+
                 var data = response.data;
 
                 data.forEach(element => {
