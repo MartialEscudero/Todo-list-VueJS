@@ -5,12 +5,12 @@
                 Liste de course
             </h1>
 
-            <v-text-field class="add" placeholder="Écrire ici" v-model="todo" @click:append="addList"  @keyup.enter="addList" :append-icon="'mdi-plus'"></v-text-field>
+            <v-text-field class="add" placeholder="Écrire ici" v-model="todo" @click:append="createList"  @keyup.enter="createList" :append-icon="'mdi-plus'"></v-text-field>
 
             <section class="list">
                 <v-list-item v-for="todo in todos" :key="todo.name">
                     <v-list-item-content>
-                        <v-btn @click="IsDone(todo)">
+                        <v-btn @click=" updateList(todo)">
                             <v-list-item-title :class="{IsDone: todo.IsDone}">{{ todo.todo }}</v-list-item-title>
                         </v-btn>
                     </v-list-item-content>
@@ -28,6 +28,7 @@
 <script>
 
 import store from '../store.js'
+import { mapGetters } from 'vuex'
 
 export default {
 
@@ -50,7 +51,7 @@ export default {
 
     methods: {
 
-        addList() {
+        createList() {
             this.$store.commit('CREATETODOSHOP', this.todo);
             this.todo = '';
         },
@@ -59,9 +60,17 @@ export default {
             this.$store.commit('DELETELISTSHOP', todo);  
         },
 
-        IsDone(todo) {
-            this.$store.commit('ISDONE', todo);  
+        updateList(todo) {
+            this.$store.commit('UPDATELISTSHOP', todo);  
         },
+    },
+
+    computed: {
+
+        ...mapGetters(
+            ['Update']
+        )
+
     }
 }
 

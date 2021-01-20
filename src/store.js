@@ -11,9 +11,9 @@ export default new Vuex.Store({
         todoSimple : ['24/01 - Partiel de management']
     },
 
-    getters: {
-        
-    },
+    // getters: {
+    //     Update: state => state.todoShop
+    // },
 
     mutations: {
 
@@ -31,7 +31,7 @@ export default new Vuex.Store({
                 console.log(data.Task,data.IsDone,data.id);
 
             })
-                        
+
         },
 
 
@@ -68,7 +68,7 @@ export default new Vuex.Store({
 
         },
 
-        ISDONE(state, todoShop) {{
+        UPDATELISTSHOP(state, todoShop) {{
 
             var index = state.todoShop.indexOf(todoShop);
             
