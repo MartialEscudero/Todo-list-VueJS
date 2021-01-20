@@ -10,7 +10,9 @@
             <section class="list">
                 <v-list-item v-for="todo in todos" :key="todo">
                     <v-list-item-content>
-                        <v-btn><v-list-item-title @click="IsDone(todo)" :class="{IsDone: todo.IsDone}">{{ todo.todo }}</v-list-item-title></v-btn>
+                        <v-btn @click="IsDone(todo)">
+                            <v-list-item-title :class="{IsDone: todo.IsDone}">{{ todo.todo }}</v-list-item-title>
+                        </v-btn>
                     </v-list-item-content>
                     <v-list-item-icon>
                         <v-btn  @click="deleteList(todo)">
@@ -49,7 +51,7 @@ export default {
     methods: {
 
         addList() {
-            this.$store.commit('ADDLISTSHOP', this.todo);
+            this.$store.commit('CREATETODOSHOP', this.todo);
             this.todo = '';
         },
 

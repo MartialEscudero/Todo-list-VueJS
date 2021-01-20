@@ -13,13 +13,13 @@ export default new Vuex.Store({
 
     mutations: {
 
-        // ADDLISTSHOP(todoShop) {
+        CREATETODOSHOP(todoShop) {
 
-        //     axios.post('https://strapi.hortusbox.com/todos/', {
-        //         Type: "market", Task: todoShop, IsDone: false
-        //     });
+            axios.post('https://strapi.hortusbox.com/todos/', {
+                Type: "market", Task: todoShop, IsDone: false   //fonctionne mais je n'arrive pas récupérer la valeur que j'ai écrit dans mon champs 'bu beurre' par exemple
+            });
 
-        // },
+        },
 
 
         DELETELISTSHOP(state, todoShop) {
