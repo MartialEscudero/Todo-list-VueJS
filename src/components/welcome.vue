@@ -1,5 +1,8 @@
 <template>
     <v-card class="main text-xs-center justify-center" width="40%" elevation="6">
+        <p class="font-weight-black">
+            Welcome
+        </p>
         <v-btn class="btn">
             <router-link :to="{name: 'todosShop'}" tag="button">Liste de course</router-link>
         </v-btn>
@@ -28,5 +31,6 @@ export default {
 </script>
 
 <style>
+
 
 </style>

@@ -8,7 +8,7 @@
             <v-text-field class="add" placeholder="Écrire ici" v-model="todo" @click:append="addList"  @keyup.enter="addList" :append-icon="'mdi-plus'"></v-text-field>
 
             <section class="list">
-                <v-list-item v-for="todo in todos" :key="todo">
+                <v-list-item v-for="todo in todos" :key="todo.name">
                     <v-list-item-content>
                         <v-btn @click="IsDone(todo)">
                             <v-list-item-title :class="{IsDone: todo.IsDone}">{{ todo.todo }}</v-list-item-title>

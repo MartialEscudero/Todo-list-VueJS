@@ -11,14 +11,26 @@ export default new Vuex.Store({
         todoSimple : ['24/01 - Partiel de management']
     },
 
+    getters: {
+        
+    },
+
     mutations: {
 
-        CREATETODOSHOP(todoShop) {
+        CREATETODOSHOP(state, todoShop) {
 
-            axios.post('https://strapi.hortusbox.com/todos/', {
-                Type: "market", Task: todoShop, IsDone: false   //fonctionne mais je n'arrive pas récupérer la valeur que j'ai écrit dans mon champs 'bu beurre' par exemple
-            });
+            state;
+            axios.post('https://strapi.hortusbox.com/todos/', { 
+            
+                Type: "market", Task: todoShop, IsDone: false 
+            
+            }).then(response => {
 
+                var data = response.data;
+
+                console.log(data.Task,data.IsDone,data.id);
+
+            })
         },
 
 
@@ -69,11 +81,13 @@ export default new Vuex.Store({
             
             var id = state.todoShop[index].id;
 
-            if (state.todoShop[index].IsDone == true) {
+            if (state.todoShop[index].IsDone === true) {
                 axios.put('https://strapi.hortusbox.com/todos/'+id, {IsDone : false});
             } else {
                 axios.put('https://strapi.hortusbox.com/todos/'+id, {IsDone : true});
             }
+
+            //axios.put('https://strapi.hortusbox.com/todos/'+id, {IsDone : state.todoShop[index].IsDone}
 
         }},
 
