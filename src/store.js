@@ -5,6 +5,7 @@ import axios from 'axios'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+
     state: {
         todoShop : [],
         todoSimple : ['24/01 - Partiel de management']
@@ -12,25 +13,22 @@ export default new Vuex.Store({
 
     mutations: {
 
-        ADDLISTSHOP(todoShop) {
+        // ADDLISTSHOP(todoShop) {
 
-            var task = [];
-            task.push(todoShop);
-            
-            console.log(task);
+        //     axios.post('https://strapi.hortusbox.com/todos/', {
+        //         Type: "market", Task: todoShop, IsDone: false
+        //     });
 
-            //axios.post('https://strapi.hortusbox.com/todos/',{Type: "market", Task: "Du beurre", IsDone: false});
-
-        },
+        // },
 
 
         DELETELISTSHOP(state, todoShop) {
 
             var index = state.todoShop.indexOf(todoShop);
+            
             var id = state.todoShop[index].id;
 
             axios.delete('https://strapi.hortusbox.com/todos/'+id);
-            state.todoShop.splice(index, 1);
 
         },
 
@@ -58,12 +56,35 @@ export default new Vuex.Store({
         },
 
 
+        // UPDATETODOS() {
+
+
+
+        // },
+
+
+        ISDONE(state, todoShop) {{
+
+            var index = state.todoShop.indexOf(todoShop);
+            
+            var id = state.todoShop[index].id;
+
+            if (state.todoShop[index].IsDone == true) {
+                axios.put('https://strapi.hortusbox.com/todos/'+id, {IsDone : false});
+            } else {
+                axios.put('https://strapi.hortusbox.com/todos/'+id, {IsDone : true});
+            }
+
+        }},
+
+
         ADDLISTSIMPLE(state, todoSimple) {
 
             if (todoSimple != '') {
                 state.todoSimple.push(todoSimple);
 
             }
+            
         },
 
 
@@ -74,4 +95,5 @@ export default new Vuex.Store({
 
         }
     }
+
 })
