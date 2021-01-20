@@ -10,11 +10,11 @@
             <section class="list">
                 <v-list-item v-for="todo in todos" :key="todo">
                     <v-list-item-content>
-                        <v-list-item-title>{{ todo }}</v-list-item-title>
+                        <v-list-item-title :class="{IsDone: todo.IsDone}">{{ todo.todo }}</v-list-item-title>
                     </v-list-item-content>
                     <v-list-item-icon>
                         <v-btn  @click="deleteList(todo)">
-                            <v-icon @click="deleteList(todo)">mdi-delete</v-icon>
+                            <v-icon>mdi-delete</v-icon>
                         </v-btn>
                     </v-list-item-icon>
                 </v-list-item>
@@ -67,6 +67,10 @@ export default {
 
     * {
         font-family: 'Inter', sans-serif;
+    }
+
+    .IsDone {
+        text-decoration: line-through;
     }
 
     .main {

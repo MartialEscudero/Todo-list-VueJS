@@ -14,7 +14,7 @@
                     </v-list-item-content>
                     <v-list-item-icon>
                         <v-btn  @click="deleteList(todo)">
-                            <v-icon @click="deleteList(todo)">mdi-delete</v-icon>
+                            <v-icon>mdi-delete</v-icon>
                         </v-btn>
                     </v-list-item-icon>
                 </v-list-item>

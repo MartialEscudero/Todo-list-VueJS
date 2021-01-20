@@ -12,56 +12,45 @@ export default new Vuex.Store({
 
     mutations: {
 
-        ADDLISTSHOP(state, todoShop) {
+        ADDLISTSHOP(todoShop) {
 
-            if (todoShop != '') {
-                state.todoShop.push(todoShop);
+            var task = [];
+            task.push(todoShop);
+            
+            console.log(task);
 
-            }
+            //axios.post('https://strapi.hortusbox.com/todos/',{Type: "market", Task: "Du beurre", IsDone: false});
+
         },
 
 
         DELETELISTSHOP(state, todoShop) {
 
             var index = state.todoShop.indexOf(todoShop);
+            var id = state.todoShop[index].id;
+
+            axios.delete('https://strapi.hortusbox.com/todos/'+id);
             state.todoShop.splice(index, 1);
-            
-            axios.get('https://strapi.hortusbox.com/todos').then(response => {
-
-                var alldata = response.data;
-
-                alldata.forEach(element => {
-
-                    if (todoShop == element.Task) {
-
-                        var id = element.id;
-
-                        axios.put('https://strapi.hortusbox.com/todos/'+id, {IsDone: true});
-                    }
-
-                });
-                
-            });
 
         },
 
 
         GETTODOS(state) {
 
-            if (state.todoShop.length != 0 ) {
-                state.todoShop.clear();
-            }
-
             axios.get('https://strapi.hortusbox.com/todos').then(response => {
 
                 var data = response.data;
 
                 data.forEach(element => {
+                    
+                    state.todoShop.push ({
 
-                    if (element.IsDone == false) {
-                        state.todoShop.push(element.Task);
-                    }
+                        todo: element.Task,
+                        IsDone : element.IsDone,
+                        id: element.id
 
+                    });
+                
                 });
 
             });
