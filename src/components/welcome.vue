@@ -1,14 +1,16 @@
 <template>
-    <v-card class="main text-xs-center justify-center" width="40%" elevation="6">
-        <p class="font-weight-black">
-            Welcome
-        </p>
-        <v-btn class="btn">
-            <router-link :to="{name: 'todosShop'}" tag="button">Liste de course</router-link>
-        </v-btn>
-        <v-btn >
-            <router-link v-model="getTodos" :to="{name: 'todosSimple'}" tag="button">Pense-bête</router-link>
-        </v-btn>
+    <v-card class="main" width="40%">
+        <h1 class="font-weight-black">
+            Choisir la liste :
+        </h1>
+        <div>
+            <v-btn>
+                <router-link :to="{name: 'todosShop'}" tag="button">Liste de course</router-link>
+            </v-btn>
+            <v-btn >
+                <router-link v-model="getTodos" :to="{name: 'todosSimple'}" tag="button">Pense-bête</router-link>
+            </v-btn>
+        </div>
     </v-card>
 </template>
 
@@ -31,6 +33,11 @@ export default {
 </script>
 
 <style>
+
+    h1 {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
 
 
 </style>

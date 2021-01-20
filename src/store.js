@@ -31,6 +31,7 @@ export default new Vuex.Store({
                 console.log(data.Task,data.IsDone,data.id);
 
             })
+                        
         },
 
 
@@ -40,7 +41,7 @@ export default new Vuex.Store({
             
             var id = state.todoShop[index].id;
 
-            axios.delete('https://strapi.hortusbox.com/todos/'+id);
+            axios.delete('https://strapi.hortusbox.com/todos/'+id);            
 
         },
 
