@@ -67,14 +67,6 @@ export default new Vuex.Store({
 
         },
 
-
-        // UPDATETODOS() {
-
-
-
-        // },
-
-
         ISDONE(state, todoShop) {{
 
             var index = state.todoShop.indexOf(todoShop);
